@@ -1,10 +1,12 @@
 import React from 'react';
 import './menu-item.styles.scss';
+import { withRouter } from 'react-router-dom';
 
 /** Functional component because we dont need to pass the state */
 
-const MenuItem = ({title, imageUrl, key, size}) =>(
-    <div className={`${size} menu-item`}>
+const MenuItem = ({title, imageUrl, key, size, history, linkUrl, match}) =>(
+    <div className={`${size} menu-item`} 
+    onClick={() => history.push(`${match.url}${linkUrl}`)}>
         <div className='background-image'  
         style ={{backgroundImage: `url(${imageUrl})`
         }}
@@ -16,4 +18,4 @@ const MenuItem = ({title, imageUrl, key, size}) =>(
      </div>
 )
 
-export default MenuItem;
+export default withRouter(MenuItem);

@@ -13,7 +13,7 @@ class Directory extends React.Component{
                 title: 'hats',
                 imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
                 id: 1,
-                linkUrl: 'shop/hats'
+                linkUrl: 'hats'
               },
               {
                 title: 'jackets',
@@ -53,9 +53,15 @@ class Directory extends React.Component{
                         <MenuItem title={section.title}/>
                     ))*/
 
-                    this.state.section.map(({title, imageUrl, id, size}) => 
-                    <MenuItem key={id} title={title} imageUrl={imageUrl} size={size}  />
-                    )
+                    // this.state.section.map(({title, imageUrl, id, size, linkUrl}) => 
+                    // <MenuItem key={id} title={title} imageUrl={imageUrl} size={size} linkUrl={linkUrl}  />
+                    // )
+                    //Other way of doing the above statement is using otherSectionProps since the names of parameters are same as state section params
+                    // for eg title={title} imageUrl={imageUrl} size={size} linkUrl={linkUrl}
+
+                    this.state.section.map(({id, ...otherSectionProps }) => (
+                        <MenuItem key={id} {...otherSectionProps} />
+                    ))
                 }
             </div>
         )
